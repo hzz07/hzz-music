@@ -77,7 +77,7 @@ export default {
     this.$refs.list.$el.style.top=`${this.$refs.bgImage.clientHeight}px`
     //获取图片的高度
     this.imageHeight=this.$refs.bgImage.clientHeight
-    //获取滚动条最小便宜量
+    //获取滚动条最小便偏移量
     this.minTranslateY=-this.imageHeight +RESERVED_HEIGHT
   },
   created(){
@@ -124,14 +124,17 @@ export default {
   watch:{
     //监听scrollY的变化
     scrollY(newY){
+      console.log(newY)
       let zIndex=0
       let tanslateY= Math.max(this.minTranslateY,newY) 
       let scale = 1
       let blur = 0
       this.$refs.bgLayer.style[transform] = `translate3D(0,${tanslateY}px,0)`
+      //下拉相对图片高度比例
       const percent= Math.abs(newY / this.imageHeight )
-
+      //如果下拉时进行图片的放大
       if(newY>0){
+        //放大比例
         scale = 1 + percent
         zIndex = 10
       }else{
@@ -139,6 +142,7 @@ export default {
       }
       this.$refs.filter.style[backdrop] = `blur(${blur}px)`
       if(newY<this.minTranslateY){
+        //下拉高度大于最高偏移量
         zIndex = 10
         this.$refs.bgImage.style.paddingTop = 0
         this.$refs.bgImage.style.height=`${RESERVED_HEIGHT}px`
@@ -148,6 +152,7 @@ export default {
         this.$refs.bgImage.style.height=0
         this.$refs.play.style.display = ''
       }
+      //设置背景图片的index 和 和背景图片缩放度
       this.$refs.bgImage.style.zIndex = zIndex
       this.$refs.bgImage.style[transform] = `scale(${scale})`
     }

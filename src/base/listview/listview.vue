@@ -89,7 +89,9 @@
       refresh(){
         this.$refs.listview.refresh()
       },
+      //开始触摸abcd时
       onShortcutTouchStart(e){
+
         let anchorIndex= getData(e.target, 'index');
         let firstTouch = e.touches[0]
         this.touch.y1=firstTouch.pageY

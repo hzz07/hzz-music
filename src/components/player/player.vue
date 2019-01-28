@@ -123,33 +123,45 @@
   const timeExp = /\[(\d{2}):(\d{2}):(\d{2})]/g
 
   export default {
+    //混入play
     mixins: [playerMixin],
     data() {
       return {
+        //歌曲加载完成标识
         songReady: false,
+        //当前歌曲播放时间
         currentTime: 0,
         radius: 32,
+        //当前歌曲歌词
         currentLyric: null,
+        //当前歌曲播放时间线
         currentLineNum: 0,
+        //cd显示标识
         currentShow: 'cd',
+        //播放歌词
         playingLyric: '',
         isPureMusic: false,
         pureMusicLyric: ''
       }
     },
     computed: {
+      //判断歌曲图片是否旋转
       cdCls() {
         return this.playing ? 'play' : ''
       },
+      //播放按钮
       playIcon() {
         return this.playing ? 'icon-pause' : 'icon-play'
       },
+      //播放小图标
       miniIcon() {
         return this.playing ? 'icon-pause-mini' : 'icon-play-mini'
       },
+      //判断当前图标是否可以点击
       disableCls() {
         return this.songReady ? '' : 'disable'
       },
+      //当前播放歌曲时间占总时长的百分比
       percent() {
         return this.currentTime / this.currentSong.duration
       },
@@ -160,15 +172,18 @@
       ])
     },
     created() {
+      //创建touch对象
       this.touch = {}
     },
     methods: {
+      //设置vuex状态 改变播放大小
       back() {
         this.setFullScreen(false)
       },
       open() {
         this.setFullScreen(true)
       },
+      //播放器进入动画
       enter(el, done) {
         const {x, y, scale} = this._getPosAndScale()
 
@@ -214,15 +229,18 @@
         this.$refs.cdWrapper.style[transform] = ''
       },
       togglePlaying() {
+        //判断歌曲是否加载
         if (!this.songReady) {
           return
         }
         this.setPlayingState(!this.playing)
+        //判断歌词加载
         if (this.currentLyric) {
           this.currentLyric.togglePlay()
         }
       },
       end() {
+        //判断结束时播放器的行为
         this.currentTime = 0
         if (this.mode === playMode.loop) {
           this.loop()
@@ -231,6 +249,7 @@
         }
       },
       loop() {
+        //重置歌曲时间和歌词
         this.$refs.audio.currentTime = 0
         this.$refs.audio.play()
         this.setPlayingState(true)
@@ -239,6 +258,7 @@
         }
       },
       next() {
+        //下一曲
         if (!this.songReady) {
           return
         }
@@ -257,6 +277,7 @@
         }
       },
       prev() {
+        //上一曲
         if (!this.songReady) {
           return
         }
@@ -298,6 +319,7 @@
       updateTime(e) {
         this.currentTime = e.target.currentTime
       },
+      //处理符合歌曲格式的时间
       format(interval) {
         interval = interval | 0
         const minute = interval / 60 | 0
@@ -320,6 +342,7 @@
           this.togglePlaying()
         }
       },
+      //获取歌词
       getLyric() {
         this.currentSong.getLyric().then((lyric) => {
           if (this.currentSong.lyric !== lyric) {
@@ -342,6 +365,7 @@
           this.currentLineNum = 0
         })
       },
+      //歌词跟随歌曲滚动
       handleLyric({lineNum, txt}) {
         if (!this.$refs.lyricLine) {
           return
@@ -358,6 +382,7 @@
       showPlaylist() {
         this.$refs.playlist.show()
       },
+      //歌曲图片和图片左右滑动
       middleTouchStart(e) {
         this.touch.initiated = true
         // 用来判断是否是一次移动
@@ -379,6 +404,7 @@
         if (!this.touch.moved) {
           this.touch.moved = true
         }
+        //判断当前是在cd还是歌词
         const left = this.currentShow === 'cd' ? 0 : -window.innerWidth
         const offsetWidth = Math.min(0, Math.max(-window.innerWidth, left + deltaX))
         this.touch.percent = Math.abs(offsetWidth / window.innerWidth)
@@ -387,6 +413,7 @@
         this.$refs.middleL.style.opacity = 1 - this.touch.percent
         this.$refs.middleL.style[transitionDuration] = 0
       },
+      //滑动结束的时候
       middleTouchEnd() {
         if (!this.touch.moved) {
           return
@@ -428,12 +455,20 @@
         return num
       },
       _getPosAndScale() {
+        //小播放图标的宽度
         const targetWidth = 40
+        //小图标相对
         const paddingLeft = 40
+
         const paddingBottom = 30
+        //大图距离顶部的高度
         const paddingTop = 80
+        //大图片的宽度
         const width = window.innerWidth * 0.8
+        //缩放比例
         const scale = targetWidth / width
+        //获取进入播放器圆形图片相对小图标的 x ，y
+
         const x = -(window.innerWidth / 2 - paddingLeft)
         const y = window.innerHeight - paddingTop - width / 2 - paddingBottom
         return {
