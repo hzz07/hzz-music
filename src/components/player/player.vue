@@ -572,7 +572,7 @@
       top: 0
       bottom: 0
       z-index: 150
-      background: $color-background
+      background: #000
       .background
         position: absolute
         left: 0
@@ -594,7 +594,7 @@
             display: block
             padding: 9px
             font-size: $font-size-large-x
-            color: $color-theme
+            color: $color-text
             transform: rotate(-90deg)
         .title
           width: 70%
@@ -654,7 +654,7 @@
               height: 20px
               line-height: 20px
               font-size: $font-size-medium
-              color: $color-text-l
+              color: $color-text
         .middle-r
           display: inline-block
           vertical-align: top
@@ -695,7 +695,7 @@
             &.active
               width: 20px
               border-radius: 5px
-              background: $color-text-ll
+              background: $color-text-l
         .progress-wrapper
           display: flex
           align-items: center
@@ -719,7 +719,7 @@
           align-items: center
           .icon
             flex: 1
-            color: $color-theme
+            color: $color-text
             &.disable
               color: $color-theme-d
             i
@@ -754,7 +754,7 @@
       z-index: 180
       width: 100%
       height: 60px
-      background: $color-highlight-background
+      background: $color-text-ll
       &.mini-enter-active, &.mini-leave-active
         transition: all 0.4s
       &.mini-enter, &.mini-leave-to
@@ -784,7 +784,7 @@
           margin-bottom: 2px
           no-wrap()
           font-size: $font-size-medium
-          color: $color-text
+          color: $color-theme
         .desc
           no-wrap()
           font-size: $font-size-small
@@ -795,7 +795,7 @@
         padding: 0 10px
         .icon-play-mini, .icon-pause-mini, .icon-playlist
           font-size: 30px
-          color: $color-theme-d
+          color: $color-sub-theme
         .icon-mini
           font-size: 32px
           position: absolute

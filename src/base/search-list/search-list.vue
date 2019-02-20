@@ -46,7 +46,7 @@
       .text
         flex: 1
         overflow :hidden
-        color: $color-text-l
+        color: $color-text-d
       .icon
         extend-click()
         .icon-delete

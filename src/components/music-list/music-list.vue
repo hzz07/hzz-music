@@ -1,6 +1,6 @@
 <template>
   <div class="music-list">
-      <div class="back" @click='back'> 
+      <div class="back" @click='back'>
         <i class="icon-back"></i>
       </div>
       <h1 class="title" v-html='title'></h1>
@@ -18,7 +18,7 @@
       <div class="bg-layer" ref="bgLayer"></div>
       <scroll :data='songs' @scroll='scroll' class='list' ref='list' :probeType='probeType' :listenScroll='listenScroll'>
         <div class="song-list-wrapper">
-           <song-list @select='selectList' :songs='songs' :rank='rank'></song-list> 
+           <song-list @select='selectList' :songs='songs' :rank='rank'></song-list>
         </div>
         <loading-container v-show="!songs.length"></loading-container>
       </scroll>
@@ -37,7 +37,7 @@ const RESERVED_HEIGHT = 40
 const transform = prefixStyle('transform')
 const backdrop = prefixStyle('webkitTransform')
 export default {
-  
+
   data(){
     return {
       scrollY:0,
@@ -126,7 +126,7 @@ export default {
     scrollY(newY){
       console.log(newY)
       let zIndex=0
-      let tanslateY= Math.max(this.minTranslateY,newY) 
+      let tanslateY= Math.max(this.minTranslateY,newY)
       let scale = 1
       let blur = 0
       this.$refs.bgLayer.style[transform] = `translate3D(0,${tanslateY}px,0)`
@@ -186,7 +186,7 @@ export default {
         display: block
         padding: 10px
         font-size: $font-size-large-x
-        color: $color-theme
+        color: $color-text
     .title
       position: absolute
       top: 0
@@ -216,8 +216,8 @@ export default {
           padding: 7px 0
           margin: 0 auto
           text-align: center
-          border: 1px solid $color-theme
-          color: $color-theme
+          border: 1px solid $color-text
+          color: $color-text
           border-radius: 100px
           font-size: 0
           .icon-play

@@ -85,7 +85,7 @@ export default {
         overflow: hidden
         .name
           no-wrap()
-          color: $color-text
+          color: $color-theme
         .desc
           no-wrap()
           margin-top: 4px

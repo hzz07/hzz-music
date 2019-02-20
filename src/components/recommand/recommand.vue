@@ -148,7 +148,7 @@
           line-height: 65px
           text-align: center
           font-size: $font-size-medium
-          color: $color-theme
+          color: $color-sub-theme
         .item
           display: flex
           box-sizing: border-box
@@ -168,7 +168,7 @@
             font-size: $font-size-medium
             .name
               margin-bottom: 10px
-              color: $color-text
+              color: $color-text-d
             .desc
               color: $color-text-d
       .loading-container

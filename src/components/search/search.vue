@@ -150,14 +150,14 @@
           .title
             margin-bottom: 20px
             font-size: $font-size-medium
-            color: $color-text-l
+            color: $color-theme
 
           .item
             display: inline-block
             padding: 5px 10px
             margin: 0 20px 10px 0
             border-radius: 6px
-            background: $color-highlight-background
+            background: $color-text-ll
             font-size: $font-size-medium
             color: $color-text-d
 
@@ -170,7 +170,7 @@
             align-items: center
             height: 40px
             font-size: $font-size-medium
-            color: $color-text-l
+            color: $color-theme
 
             .text
               flex: 1

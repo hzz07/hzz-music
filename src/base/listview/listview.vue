@@ -1,7 +1,7 @@
 <template>
-  <scroll class='listview'  
-  :data='data' 
-  ref = 'listview' 
+  <scroll class='listview'
+  :data='data'
+  ref = 'listview'
   :listenScroll=listenScroll
   @scroll='scroll'
   :probeType='probeType'
@@ -10,7 +10,7 @@
       <li v-for='group in data' class='list-group' ref='listgroup'>
         <h2 class="list-group-title">{{group.title}}</h2>
         <ul>
-          <li class="list-group-item" 
+          <li class="list-group-item"
           v-for='item in group.items'
           @click='seletItem(item)'
           >
@@ -21,14 +21,14 @@
         </ul>
       </li>
     </ul>
-    <div class="list-shortcut" 
+    <div class="list-shortcut"
     @touchstart='onShortcutTouchStart'
-    @touchmove.stop.prevent='onShortcutTouchMove'                          
+    @touchmove.stop.prevent='onShortcutTouchMove'
     >
       <ul>
-        <li 
-        v-for='(item,index) in shortCartList' 
-        class="item" 
+        <li
+        v-for='(item,index) in shortCartList'
+        class="item"
         :data-index='index'
         :class="{'current':currentIndex===index}"
         >
@@ -40,7 +40,7 @@
       <h1 class="fixed-title">{{fixedTitle}}</h1>
     </div>
     <div v-show='!data.length' class="loading-container">
-      <loading></loading> 
+      <loading></loading>
     </div>
   </scroll>
 </template>
@@ -52,7 +52,7 @@
   const ANCHOR_HEIGHT=18
   const TITLE_HEIGHT=30
   export default{
-    
+
     data(){
       return{
         scrollY:-1,
@@ -68,7 +68,7 @@
       },
       fixedTitle(){
         if(this.scrollY>0){
-          return 
+          return
         }
         return this.data[this.currentIndex]?this.data[this.currentIndex].title : ''
       }
@@ -142,7 +142,7 @@
         },20)
       },
       scrollY(newY){
-        
+
         const listenHeight = this.listenHeight
         //下拉时
         if(newY>0){
@@ -158,7 +158,7 @@
             this.currentIndex = i
             return
           }
-          
+
         }
         //当滚动到底部，且-newY的大于最后一个元素的上限
         this.currentIndex =listenHeight.length-2
@@ -196,8 +196,8 @@
         line-height: 30px
         padding-left: 20px
         font-size: $font-size-small
-        color: $color-text-l
-        background: $color-highlight-background
+        color: $color-theme
+        background: $color-text-ll
       .list-group-item
         display: flex
         align-items: center
@@ -208,7 +208,7 @@
           border-radius: 50%
         .name
           margin-left: 20px
-          color: $color-text-l
+          color: $color-theme
           font-size: $font-size-medium
     .list-shortcut
       position: absolute
@@ -220,15 +220,16 @@
       padding: 20px 0
       border-radius: 10px
       text-align: center
-      background: $color-background-d
       font-family: Helvetica
       .item
         padding: 3px
         line-height: 1
-        color: $color-text-l
+        color: $color-theme
         font-size: $font-size-small
         &.current
-          color: $color-theme
+          border-radius 50%
+          background-color $color-sub-theme
+          color: $color-text
     .list-fixed
       position: absolute
       top: -1px
@@ -239,8 +240,8 @@
         line-height: 30px
         padding-left: 20px
         font-size: $font-size-small
-        color: $color-text-l
-        background: $color-highlight-background
+        color: $color-sub-theme
+        background: #e5e5e5
     .loading-container
       position: absolute
       width: 100%

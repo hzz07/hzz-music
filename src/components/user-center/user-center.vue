@@ -144,18 +144,20 @@
       padding: 7px 0
       margin: 0 auto
       text-align: center
-      border: 1px solid  $color-text-l
-      color: $color-text-l
+      border: 1px solid  $color-text-ll
+      color: $color-text-ll
       border-radius: 100px
       font-size: 0
       .icon-play
         display: inline-block
         vertical-align: middle
         margin-right: 6px
+        color:$color-theme
         font-size: $font-size-medium-x
       .text
         display: inline-block
         vertical-align: middle
+        color:$color-theme
         font-size: $font-size-small
     .list-wrapper
       position: absolute

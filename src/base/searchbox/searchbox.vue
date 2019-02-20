@@ -51,21 +51,22 @@ import {debounce} from 'common/js/util'
     width: 100%
     padding: 0 6px
     height: 40px
-    background: $color-highlight-background
     border-radius: 6px
+    background-color $color-text-ll
     .icon-search
       font-size: 24px
-      color: #fff
+      color:$color-text-d
     .box
       flex: 1
       margin: 0 5px
       line-height: 18px
       background: $color-highlight-background
-      color: $color-text
+      color: $color-theme
+      background-color #e5e5e5
       font-size: $font-size-medium
       &::placeholder
-        color: $color-text-d
+        color: $color-text-ll
     .icon-dismiss
       font-size: 16px
-      color: #fff
+      color: $color-text-d
 </style>

@@ -13,7 +13,7 @@
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  
+
   @import "~common/stylus/variable"
   @import "~common/stylus/mixin"
 
@@ -21,7 +21,8 @@
     position: relative
     height: 44px
     text-align: center
-    color: $color-theme
+    color: $color-text
+    background-color $color-sub-theme
     font-size: 0
     .icon
       display: inline-block
@@ -45,5 +46,5 @@
         display: block
         padding: 12px
         font-size: 20px
-        color: $color-theme
+        color: $color-text
 </style>
